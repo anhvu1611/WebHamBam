@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATTT hàm Băm-Chữ ký số</title>
+    <link rel="shortcut icon" href="../image/sonnees.png" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/div.css">
+    <script src="../js/attt.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body style="background-color: #efefef;">
+    <div class="container" style="width: 90%; height: 2000px;">
+        <div class="div" style=" height: 200px">
+            <h2 style="text-align: center; padding-top: 30px; padding-bottom: 30px ; color: red;">NHẬP MÔN AN TOÀN THÔNG TIN </h2>   
+            <table style="width: 50%; margin-top: 40px; margin-left: 50px; ">
+                <h6>Giảng viên hướng dẫn: TS. Ngô Hữu Dũng</h6>
+                <h6>Người thực hiện: Nguyễn Anh Vũ</h6>
+            </table>
+           
+        </div>
+        <div class="div" style=" height: 590px;">
+            <h5>1. Hàm băm CRC32</h5>
+            <p>Hàm băm CRC32 là một thuật toán băm được sử dụng để tính toán giá trị băm cho một dữ liệu đầu vào. CRC là viết tắt của "Cyclic Redundancy Check" và 32 chỉ ra rằng thuật toán này tạo ra một giá trị băm có độ dài 32-bit.</p>
+            <p>Thuật toán CRC32 hoạt động bằng cách xem dữ liệu đầu vào như một chuỗi bit và tính toán giá trị băm dựa trên phép toán XOR và phép chia cơ sở 2.</p>
+            <p>Quá trình tính toán giá trị băm CRC32 bao gồm các bước sau:</p>
+            <ul>
+                <li>Bước 1: Khởi tạo giá trị băm ban đầu thành một giá trị cố định (thường là 0xFFFFFFFF hoặc 0x00000000).</li>
+                <li>Bước 2: Đọc dữ liệu đầu vào theo từng byte (hoặc từng bit) và thực hiện phép toán XOR giữa giá trị băm hiện tại và byte (hoặc bit) đang xét.</li>
+                <li>Bước 3: Thực hiện phép chia cơ sở 2 bằng cách dịch trái giá trị băm hiện tại và thực hiện phép XOR với một giá trị cố định được gọi là "polynomial" (trong trường hợp CRC32, polynomial là 0x04C11DB7).</li>
+                <li>Bước 4: Lặp lại bước 2 và bước 3 cho tất cả các byte (hoặc bit) trong dữ liệu đầu vào.</li>
+                <li>Bước 5: Kết quả cuối cùng là giá trị băm CRC32 của dữ liệu đầu vào.</li>
+            </ul>
+            <p>Giá trị băm CRC32 thường được sử dụng trong nhiều ứng dụng, bao gồm kiểm tra tính toàn vẹn dữ liệu, phát hiện lỗi truyền thông và xác định sự trùng lặp dữ liệu.</p>
+            <div class="container mt-5" style="width: 50%;">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputCRC32" placeholder="Nhập dữ liệu">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button" id="CRC32">CRC32</button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="passwordHashCRC32" placeholder="Dữ liệu sau khi băm">
+                </form>
+
+            </div>
+        </div>
+        <div class="div" style=" height: 470px;">
+            <h5>2. Hàm băm SHA-1</h5>
+            <p>Hàm băm SHA-1 là một thuật toán băm được sử dụng để tính toán giá trị băm cho một dữ liệu đầu vào. SHA là viết tắt của "Secure Hash Algorithm" và 1 chỉ ra rằng thuật toán này tạo ra một giá trị băm có độ dài 160-bit.</p>
+            <p>SHA-1 hoạt động bằng cách xem dữ liệu đầu vào như một chuỗi các bit và thực hiện một loạt các phép toán logic để tính toán giá trị băm.</p>
+            <p>Quá trình tính toán giá trị băm SHA-1 bao gồm các bước sau:</p>
+            <ul>
+                <li>Bước 1: Chia dữ liệu đầu vào thành các khối bằng cách thêm padding (bổ sung bit) để đảm bảo độ dài của dữ liệu là bội số của 512-bit.</li>
+                <li>Bước 2: Khởi tạo giá trị ban đầu của bốn biến (A, B, C, D, E) thành một giá trị cố định.</li>
+                <li>Bước 3: Xử lý từng khối dữ liệu theo từng vòng lặp, sử dụng các phép toán bitwise và logic để cập nhật giá trị của các biến.</li>
+                <li>Bước 4: Kết quả cuối cùng là giá trị băm SHA-1 của dữ liệu đầu vào.</li>
+            </ul>
+            <div class="container mt-5" style="width: 70%;">
+
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputSHA-1" placeholder="Nhập dữ liệu">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button" id="SHA-1">SHA-1</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="passwordHashSHA-1" placeholder="Dữ liệu sau khi băm">
+                    </div>
+                    <div style="margin-top: 5px;"></div>
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="div" style=" height: 550px;">
+            <h5>3. Hàm băm MD5</h5>
+            <p>Hàm băm MD5 (Message Digest Algorithm 5) là một thuật toán băm được sử dụng để tính toán giá trị băm cho một dữ liệu đầu vào. MD5 tạo ra một giá trị băm có độ dài 128-bit.</p>
+            <p>MD5 hoạt động bằng cách xem dữ liệu đầu vào như một chuỗi các bit và thực hiện một loạt các phép toán bitwise và logic để tính toán giá trị băm.</p>
+            <p>Quá trình tính toán giá trị băm MD5 bao gồm các bước sau:</p>
+            <ul>
+                <li>Bước 1: Chia dữ liệu đầu vào thành các khối bằng cách thêm padding (bổ sung bit) để đảm bảo độ dài của dữ liệu là bội số của 512-bit.</li>
+                <li>Bước 2: Khởi tạo giá trị ban đầu của bốn biến (A, B, C, D) thành một giá trị cố định.</li>
+                <li>Bước 3: Xử lý từng khối dữ liệu theo từng vòng lặp, sử dụng các phép toán bitwise và logic để cập nhật giá trị của các biến.</li>
+                <li>Bước 4: Kết quả cuối cùng là giá trị băm MD5 của dữ liệu đầu vào.</li>
+            </ul>
+            <div class="container mt-5" style="width: 70%;">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMD5" placeholder="Nhập dữ liệu">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button" id="MD5">MD5</button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="passwordHashMD5" placeholder="Dữ liệu sau khi băm">
+                </form>
+                <div style="margin-top: 5px;"></div>
+            </div>
+        </div>
+        <div class="div" style=" height: 340px;">
+            <h5>4. Chữ ký số RSASSA-PKCS1-v1_5</h5>
+            <p>Chữ ký số RSASSA-PKCS1-v1_5 (RSA Signature Scheme with Appendix, PKCS #1 v1.5) là một thuật toán chữ ký số sử dụng khóa công khai RSA. Nó được mô tả trong tiêu chuẩn PKCS #1 của RSA Laboratories.</p>
+            <p>Quá trình tạo chữ ký số RSASSA-PKCS1-v1_5 bao gồm các bước sau:</p>
+            <ul>
+                <li>Bước 1: Chuẩn bị dữ liệu cần ký và khóa riêng (khóa bí mật) tương ứng của người ký.</li>
+                <li>Bước 2: Áp dụng hàm băm (như SHA-1 hoặc SHA-256) lên dữ liệu cần ký để tạo ra một giá trị băm (digest).</li>
+                <li>Bước 3: Sử dụng khóa riêng, áp dụng thuật toán RSA để mã hóa giá trị băm (digest) đã được tạo ở bước trước.</li>
+                <li>Bước 4: Kết quả của quá trình mã hóa sẽ tạo ra chữ ký số RSASSA-PKCS1-v1_5.</li>
+            </ul>
+  
+        </div>
+        <div class="div" style=" height: 820px; margin-top: -6px;">
+            <h6>4.1 Tạo một cặp khóa RSASSA-PKCS1-v1_5</h6>
+                Sử dụng phương thức generateKey của Web Crypto API để tạo một khóa RSA với các tham số được cấu hình như sau:
+            <ul>
+                
+                <li>
+                    Tên thuật toán: RSASSA-PKCS1-v1_5
+                </li>
+                <li>
+                    Độ dài modulus: 2048 bit
+                </li>
+                <li>
+                    Public exponent: 0x10001
+                </li>
+                <li>
+                    Thuật toán hash: SHA-256
+                </li>
+            </ul>
+            <div class="div">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button style="margin-left: 18px;" class="btn btn-outline-danger" type="button" id="privateKey">Tạo Private Key
+                            và Public Key</button>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;"></div>
+                <div class="input-group" class="col-12">
+                    <h6 class="col-2">Private Key: </h6>
+                    <textarea id="inputPrivateKey" rows="10" cols="1000" class="col-10 form-control">
+                                            </textarea>
+                </div>
+                <div style="margin-top: 20px;"></div>
+                <div class="input-group" class="col-12">
+                    <h6 class="col-2">Public  Key: </h6>
+                    <textarea id="inputPublicKey" rows="9" cols="1000" class="col-10 form-control" p>
+                                            </textarea>
+                </div>
+ 
+            </div>
+        </div>
+
+        <div class="div" style=" height: 110px; margin-top: -6px;">
+            <h6>4.2 Nhập một tin nhắn.</h6>
+            <div class="container" style="width: 90%;">
+                <input type="text" class="form-control" id="dataSign"
+                    placeholder="Nhập một tin nhắn vào đây">
+            </div>
+        </div>
+
+        <div class="div" style=" height: 450px; margin-bottom: 30px">
+            <h6>4.3 Kết hợp chữ ký với dữ liệu được ký để tạo thành chữ ký số RSASSA-PKCS1-v1_5</h6>
+            <div style="margin-top: 30px;"></div>
+            <div class="input-group">
+                <div class="input-group-append">
+                    <button style="margin-left: 18px;" class="btn btn-outline-danger" type="button" id="sign">Message và Tạo chữ kí đi kèm</button>
+                </div>
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+            
+                <h6 class="col-2">Message: </h6>
+                <input type="text" class="form-control" id="reData" placeholder="Tin nhắn sẽ hiện ở đây">
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+                
+                <h6 class="col-2">Chữ ký: </h6>
+                <textarea id="inputSign" rows="7" cols="1000" class="col-10 form-control" placeholder="Chữ ký sẽ hiện ở đây"></textarea>
+            </div>
+        </div>
+    </div>
+    <script>
+        // hàm băm mật khẩu crc32
+        document.getElementById("CRC32").addEventListener("click", function() {
+
+            function crc32(str) {
+                let crc = 0xFFFFFFFF;
+                for (let i = 0; i < str.length; i++) {
+                    const c = str.charCodeAt(i) & 0xFF;
+                    crc ^= c;
+                    for (let j = 0; j < 8; j++) {
+                        if (crc & 1) {
+                            crc = (crc >>> 1) ^ 0xEDB88320;
+                        } else {
+                            crc >>>= 1;
+                        }
+                    }
+                }
+                return (crc ^ 0xFFFFFFFF) >>> 0;
+            }
+            var password = document.getElementById("inputCRC32").value;
+
+            const hashValue = crc32(password).toString(16).toUpperCase();
+            document.getElementById("passwordHashCRC32").value = hashValue;
+        });
+
+        document.getElementById("SHA-1").addEventListener("click", function() {
+            var password = document.getElementById("inputSHA-1").value;
+            const hash = CryptoJS.SHA1(password);
+            const hash_value = hash.toString(CryptoJS.enc.Hex);
+            document.getElementById("passwordHashSHA-1").value = hash_value;
+            document.getElementById("passwordHashSHA-1Length").value = "Độ dài của kết quả băm (tính bằng bit, length * 4): " + hash_value.length * 4;
+        });
+        document.getElementById("MD5").addEventListener("click", function() {
+            var password = document.getElementById("inputMD5").value;
+            const hash = CryptoJS.MD5(password);
+            const hash_value = hash.toString(CryptoJS.enc.Hex);
+            document.getElementById("passwordHashMD5").value = hash_value;
+            document.getElementById("passwordHashMD5Length").value = "Độ dài của kết quả băm (tính bằng bit, length * 4): " + hash_value.length * 4;
+        });
+
+        function arrayBufferToHex(buffer) {
+                return Array.prototype.map.call(new Uint8Array(buffer), function (x) {
+                    return ('00' + x.toString(16)).slice(-2);
+                }).join('');
+        }
+
+        function hexToArrayBuffer(hexString) {
+                const buffer = new Uint8Array(hexString.length / 2);
+                for (let i = 0; i < hexString.length; i += 2) {
+                    buffer[i / 2] = parseInt(hexString.substring(i, i + 2), 16);
+                }
+                return buffer;
+        }
+       
+        async function generateKeyPair() {
+            const keyPair = await window.crypto.subtle.generateKey(
+                {
+                    name: "RSASSA-PKCS1-v1_5",
+                    modulusLength: 2048,
+                    publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                    hash: {
+                        name: "SHA-256"
+                    }
+                },
+                true,
+                ["sign", "verify"]
+            );
+
+            privateKey = await window.crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
+            publicKey = await window.crypto.subtle.exportKey("spki", keyPair.publicKey);
+
+            return {
+                privateKey,
+                publicKey
+            };
+        }
+
+        async function signData(privateKey, data) {
+                const privateKeyObj = await window.crypto.subtle.importKey(
+                    "pkcs8",
+                    privateKey,
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                        hash: {
+                            name: "SHA-256"
+                        }
+                    },
+                    false,
+                    ["sign"]
+                );
+
+                const signature = await window.crypto.subtle.sign(
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                    },
+                    privateKeyObj,
+                    data
+                );
+
+                return signature;
+            }
+        async function verifySignature(publicKey, signature, data) {
+                const publicKeyObj = await window.crypto.subtle.importKey(
+                    "spki",
+                    publicKey,
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                        hash: {
+                            name: "SHA-256"
+                        }
+                    },
+                    false,
+                    ["verify"]
+                );
+
+                const result = await window.crypto.subtle.verify(
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                    },
+                    publicKeyObj,
+                    signature,
+                    data
+                );
+
+                return result;
+            }
+
+        document.getElementById("privateKey").addEventListener("click", async function () {
+
+                try {  
+                    generateKeyPair().then((keyPair) => {
+                        document.getElementById("inputPrivateKey").value = arrayBufferToHex(keyPair.privateKey);
+                        document.getElementById("inputPublicKey").value = arrayBufferToHex(keyPair.publicKey);
+                    })
+                    
+                } catch (err) {
+                    alert(err);
+                }
+            });
+        
+        document.getElementById("sign").addEventListener("click", async function () {
+            data = new TextEncoder().encode(document.getElementById("dataSign").value);
+            document.getElementById("reData").value = document.getElementById("dataSign").value;
+            privateKey = hexToArrayBuffer(document.getElementById("inputPrivateKey").value);
+            try {
+                const signature = await signData(privateKey, data);
+                document.getElementById("inputSign").value = arrayBufferToHex(signature)
+            } catch (error) {
+                alert(error);
+            } 
+        });
+
+        document.getElementById("checkSign").addEventListener("click", async function () {
+            data = new TextEncoder().encode(document.getElementById("data5").value);
+            signature = hexToArrayBuffer(document.getElementById("signData5").value);
+            publicKey = hexToArrayBuffer(document.getElementById("publicKey5").value);
+
+            try {
+                const isVerified = await verifySignature(publicKey, signature, data);
+               
+                if (isVerified) {
+                     document.getElementById("kqCheckSign").value = "Tin nhắn chính chủ";
+                } else {
+                     document.getElementById("kqCheckSign").value = "Tin nhắn không chính chủ, nội dung đã bị thay đổi";
+                }
+            } catch (error) {
+                alert(error);
+            } 
+        });
+    </script>
+</body>
+</html>
